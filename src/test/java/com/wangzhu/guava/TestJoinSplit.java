@@ -24,6 +24,7 @@ public class TestJoinSplit {
 	private static final String WITH_KEY = "=";
 
 	public static void main(String[] args) {
+
 		// 将List转化为String
 		List<String> strList = Lists.newArrayList("John", "Jane", "Tom", "Ada");
 		TestJoinSplit.logger.info("convert list to string:{}",
