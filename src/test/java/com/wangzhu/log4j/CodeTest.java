@@ -20,6 +20,7 @@ public class CodeTest {
             rollingFileAppender1.setFile("log4jTest/log_1.txt");
             rollingFileAppender1.setAppend(true);
             rollingFileAppender1.setBufferedIO(true);
+            //单独设置时，需要activateOptions
             rollingFileAppender1.activateOptions();
 
             Logger log1 = Logger.getLogger("log1");
@@ -40,6 +41,7 @@ public class CodeTest {
             Runtime.getRuntime().addShutdownHook(new Thread() {
                 @Override
                 public void run() {
+                    //当有BufferedIO=true时，需要给JVM一个钩子，当JVM停止时，刷新缓存
                     LogManager.shutdown();
                 }
             });
