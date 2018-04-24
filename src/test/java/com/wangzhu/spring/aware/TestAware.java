@@ -6,13 +6,6 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 
 import com.wangzhu.spring.test.base.UnitTestBase;
 
-/**
- * ApplicationAware与BeanNameAware接口
- * 
- * @author wangzhu
- * @date 2015-3-7下午2:23:54
- * 
- */
 @RunWith(BlockJUnit4ClassRunner.class)
 public class TestAware extends UnitTestBase {
 
