@@ -1,5 +1,6 @@
 package com.wangzhu.log4j;
 
+import com.wangzhu.TestBase;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.Test;
@@ -9,17 +10,12 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by wangzhu on 2018/4/15 下午5:27.
  */
-public class PropertiesTest {
-    static{
+public class PropertiesTest extends TestBase {
+    static {
         System.setProperty("log4j.defaultInitOverride", "true");
         PropertyConfigurator.configure(Thread.currentThread().getContextClassLoader().getResource("log4j.properties"));
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-            @Override
-            public void run() {
-                LogManager.shutdown();
-            }
-        });
     }
+
     private static final Logger logger = LoggerFactory.getLogger(PropertiesTest.class);
 
     private static final Logger fileLog1 = LoggerFactory.getLogger("f1");
