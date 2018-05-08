@@ -7,13 +7,6 @@ import com.wangzhu.spring.beanannotation.javabased.Store;
 import com.wangzhu.spring.beanannotation.multibean.BeanInvoker;
 import com.wangzhu.spring.test.base.UnitTestBase;
 
-/**
- * Bean基于注解的实现【Component、Scope】
- * 
- * @author wangzhu
- * @date 2015-3-7下午4:30:55
- * 
- */
 public class TestBeanAnnotation extends UnitTestBase {
 
 	public TestBeanAnnotation() {
@@ -22,7 +15,6 @@ public class TestBeanAnnotation extends UnitTestBase {
 
 	@Test
 	public void testBeanAnnotation() {
-		// 当注解Component未指定值时，则Bean的名称为该类的第一位小写，即beanAnnotation
 		BeanAnnotation beanAnnotation1 = this.getBean("myBeanAnnotation");
 		beanAnnotation1.say("this is a test beanannotation");
 
@@ -34,7 +26,6 @@ public class TestBeanAnnotation extends UnitTestBase {
 
 	@Test
 	public void testAutowired() {
-		// autowired可以注解成员变量、成员变量的set方法，构造方法
 		InjectionService service = super.getBean("injectionServiceImpl");
 		service.save("this is a test autowired!");
 	}
@@ -51,5 +42,11 @@ public class TestBeanAnnotation extends UnitTestBase {
 		System.out.println(store.getClass().getName());
 
 		this.getBean("myDriverManager");
+	}
+
+	@Test
+	public void testInitDestry(){
+		//娴嬭瘯init鍜宒estry鏂规硶
+		this.getBean("beanLifeCycle");
 	}
 }
