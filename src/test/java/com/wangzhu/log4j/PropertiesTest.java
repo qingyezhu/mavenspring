@@ -29,6 +29,13 @@ public class PropertiesTest extends TestBase {
             fileLog1.info("{}:hello", i);
             fileLog2.info("{}:world", i);
             fileLog3.info("{}:welcome", i);
+
+        }
+
+        for(int j = 0;j < 10;j ++) {
+            for (int i = 0; i < 3; i++) {
+                LoggerFactory.getLogger("log_" + i).info(System.currentTimeMillis() + "|" + i + "|" + j);
+            }
         }
     }
 }

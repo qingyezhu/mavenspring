@@ -1,5 +1,6 @@
 package com.wangzhu.spring.aop.aspectj;
 
+import com.wangzhu.annotation.LogSwitch;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -8,7 +9,11 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.stereotype.Component;
+
+import java.lang.reflect.Method;
 
 @Component
 @Aspect
@@ -64,4 +69,16 @@ public class BizAspectJ {
 		return obj;
 	}
 
+	@Around("execution(* com.wangzhu.spring.aop.aspectj.biz.IUserService.*(..))")
+	public Object aroundUserService(ProceedingJoinPoint pjp) throws Throwable {
+		final MethodSignature methodSignature = (MethodSignature) pjp.getSignature();
+		final Method method = methodSignature.getMethod();
+		LogSwitch logSwitch = AnnotationUtils.findAnnotation(method, LogSwitch.class);
+		System.out.println(AnnotationUtils.findAnnotation(method, LogSwitch.class));
+		System.out.println(AnnotationUtils.findAnnotation(pjp.getTarget().getClass().getMethod(method.getName(), method.getParameterTypes()), LogSwitch.class));
+
+		System.out.println(logSwitch);
+		Object obj = pjp.proceed();
+		return obj;
+	}
 }

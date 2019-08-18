@@ -1,5 +1,6 @@
 package com.wangzhu.spring.aop.aspectj;
 
+import com.wangzhu.spring.aop.aspectj.biz.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
@@ -14,9 +15,15 @@ public class TestAspectJ extends UnitTestBase {
 		super("classpath:spring-aop-aspectj.xml");
 	}
 
+//	@Test
+//	public void testAspectJ() {
+//		AspectJBiz biz = super.getBean("aspectJBiz");
+//		System.out.println(biz.save("testAspectJ"));
+//	}
+
 	@Test
-	public void testAspectJ() {
-		AspectJBiz biz = super.getBean("aspectJBiz");
-		System.out.println(biz.save("testAspectJ"));
+	public void testUserServce(){
+		IUserService userService = super.getBean(IUserService.class);
+		userService.queryUser("100");
 	}
 }

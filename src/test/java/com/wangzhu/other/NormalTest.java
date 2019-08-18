@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import com.wangzhu.TestBase;
 import com.wangzhu.share.ShareTest;
 import com.wangzhu.utils.JSONUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -80,5 +81,18 @@ public class NormalTest extends TestBase {
             System.out.println(roomScore);
         }
         System.out.println("end");
+    }
+
+    @Test
+    public void test3(){
+        Double d = Double.parseDouble(Integer.MAX_VALUE+ "");
+        System.out.println(d.longValue());
+        System.out.println(Double.parseDouble(Integer.MAX_VALUE + ""));
+    }
+
+    @Test
+    public void test4(){
+        System.out.println(10+10+"a");
+        System.out.println("a"+10+10);
     }
 }
