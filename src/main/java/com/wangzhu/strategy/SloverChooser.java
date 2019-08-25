@@ -35,6 +35,7 @@ public class SloverChooser implements ApplicationContextAware, InitializingBean 
         for (final Map.Entry<String, IStrategyService> entry : strategyServiceMap.entrySet()) {
             final String key = entry.getKey();
             final IStrategyService strategyService = entry.getValue();
+            //服务别名
             logger.info("detail key|{}|strategyService|{}", key, strategyService);
             strategyServices.put(strategyService.getCurrentStrategy(), strategyService);
         }
