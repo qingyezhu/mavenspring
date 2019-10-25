@@ -3,15 +3,9 @@ package com.wangzhu.other;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.wangzhu.TestBase;
-import com.wangzhu.share.ShareTest;
-import com.wangzhu.utils.JSONUtils;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -75,24 +69,51 @@ public class NormalTest extends TestBase {
         printRoomScore(roomScores);
     }
 
-    private void printRoomScore(List<RoomScore> roomScores){
+    private void printRoomScore(List<RoomScore> roomScores) {
         System.out.println("start");
-        for(RoomScore roomScore : roomScores){
+        for (RoomScore roomScore : roomScores) {
             System.out.println(roomScore);
         }
         System.out.println("end");
     }
 
     @Test
-    public void test3(){
-        Double d = Double.parseDouble(Integer.MAX_VALUE+ "");
+    public void test3() {
+        Double d = Double.parseDouble(Integer.MAX_VALUE + "");
         System.out.println(d.longValue());
         System.out.println(Double.parseDouble(Integer.MAX_VALUE + ""));
     }
 
     @Test
-    public void test4(){
-        System.out.println(10+10+"a");
-        System.out.println("a"+10+10);
+    public void test4() {
+        System.out.println(10 + 10 + "a");
+        System.out.println("a" + 10 + 10);
+    }
+
+    @Test
+    public void testListRemove() {
+        final List<String> list = new ArrayList<>();
+        list.add("a");
+        list.add("b");
+//        list.add("c");
+
+        System.out.println(list.size());
+
+        final String item = "a";
+        for (final String str : list) {
+            if (str.equals(item)) {
+                list.remove(str);
+            }
+        }
+
+//        final Iterator<String> iterator = list.iterator();
+//        while(iterator.hasNext()){
+//            final String str = iterator.next();
+//            if(str.equals(item)){
+//                list.remove(str);
+//            }
+//        }
+
+        System.out.println(list.size());
     }
 }
