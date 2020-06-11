@@ -69,4 +69,9 @@ public class ScheduledService {
         }
         logger.info("end cron");
     }
+
+    @Scheduled(cron = "1,3 0 0 * * ?")
+    public void testCron1(){
+        System.out.println("testCron1");
+    }
 }

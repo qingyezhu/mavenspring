@@ -123,4 +123,20 @@ public class TestString {
         //局部变量编译期无法确定，故是创建新对象 false
         logger.info("{}", str3 == str4);
     }
+
+    @Test
+    public void test13() {
+        String str = null;
+        switch (str) {
+            case "1":
+                System.out.println("1");
+                break;
+            case "a":
+                System.out.println("a");
+                break;
+            default:
+                System.out.println("default");
+                break;
+        }
+    }
 }

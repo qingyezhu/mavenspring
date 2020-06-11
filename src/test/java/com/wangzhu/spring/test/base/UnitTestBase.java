@@ -7,7 +7,7 @@ import org.springframework.util.StringUtils;
 
 public class UnitTestBase {
 	private String springXmlpath;
-	private ClassPathXmlApplicationContext context;
+	protected ClassPathXmlApplicationContext context;
 
 	public UnitTestBase() {
 	}

@@ -14,6 +14,6 @@
 
     <!--<task:annotation-driven/>-->
 
-    <!--<task:annotation-driven scheduler="poolTaskScheduler"/>-->
-    <!--<task:scheduler id="poolTaskScheduler" pool-size="10"/>-->
+    <task:annotation-driven scheduler="poolTaskScheduler"/>
+    <task:scheduler id="poolTaskScheduler" pool-size="10"/>
 </beans>

@@ -1,6 +1,7 @@
 package com.wangzhu.spring.aop.aspectj;
 
 import com.wangzhu.annotation.LogSwitch;
+import com.wangzhu.annotation.ServiceProxy;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -76,6 +77,7 @@ public class BizAspectJ {
 		LogSwitch logSwitch = AnnotationUtils.findAnnotation(method, LogSwitch.class);
 		System.out.println(AnnotationUtils.findAnnotation(method, LogSwitch.class));
 		System.out.println(AnnotationUtils.findAnnotation(pjp.getTarget().getClass().getMethod(method.getName(), method.getParameterTypes()), LogSwitch.class));
+		System.out.println(AnnotationUtils.findAnnotation(pjp.getTarget().getClass(), ServiceProxy.class));
 
 		System.out.println(logSwitch);
 		Object obj = pjp.proceed();
