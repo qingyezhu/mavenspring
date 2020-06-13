@@ -2,6 +2,7 @@ package com.wangzhu.annotation;
 
 import com.wangzhu.spring.registrar.SelfBeanRegistrar;
 import org.springframework.context.annotation.Import;
+import org.springframework.stereotype.Component;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -14,6 +15,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Import(SelfBeanRegistrar.class)
+@Component
 public @interface SelfBean {
     String name();
 }
