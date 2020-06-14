@@ -1,6 +1,7 @@
 package com.wangzhu.spring.registrar;
 
 import com.wangzhu.service.SelfBService;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
@@ -14,7 +15,10 @@ public class SelfServiceRegistrar implements ImportBeanDefinitionRegistrar {
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
 
         BeanDefinitionBuilder beanDefinitionBuilder  = BeanDefinitionBuilder.genericBeanDefinition(SelfBService.class);
-        beanDefinitionBuilder.addPropertyReference("selfDService", "selfdservice");
+        final BeanDefinition propertyBeanDefinition = registry.getBeanDefinition("selfdservice");
+        System.out.println("--------" + propertyBeanDefinition);
+//        beanDefinitionBuilder.addPropertyReference("selfDService", "selfdservice");
+        beanDefinitionBuilder.addPropertyValue("selfDService", propertyBeanDefinition);
         registry.registerBeanDefinition("selfB", beanDefinitionBuilder.getBeanDefinition());
 
     }
