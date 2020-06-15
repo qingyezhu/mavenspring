@@ -8,9 +8,20 @@ import com.wangzhu.spring.scanv2.SelfComponent;
  **/
 @SelfBean(name = "abc")
 @SelfComponent("selfScanService")
-public class SelfService {
+public class SelfService{
+
+    private Object instance;
+
+    public void setInstance(Object instance) {
+        this.instance = instance;
+    }
 
     public void print() {
         System.out.println("timestamp: " + System.currentTimeMillis());
+        System.out.println(instance);
+
+        final IMyInterface myInterface = (IMyInterface)instance;
+        System.out.println(myInterface.calc("acd"));
     }
+
 }

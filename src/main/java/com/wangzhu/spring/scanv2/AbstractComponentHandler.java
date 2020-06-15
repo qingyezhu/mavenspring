@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.beans.factory.support.BeanNameGenerator;
+import org.springframework.context.annotation.AnnotationBeanNameGenerator;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.core.type.filter.TypeFilter;
 
@@ -15,6 +17,8 @@ import java.util.Map;
  **/
 public abstract class AbstractComponentHandler {
     protected final Logger logger = LoggerFactory.getLogger(getClass());
+
+    protected BeanNameGenerator beanNameGenerator = new AnnotationBeanNameGenerator();
 
     private final Class<? extends Annotation> annotationType;
     private final TypeFilter typeFilter;

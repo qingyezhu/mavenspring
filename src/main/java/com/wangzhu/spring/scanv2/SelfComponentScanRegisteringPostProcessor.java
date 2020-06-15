@@ -52,9 +52,10 @@ public class SelfComponentScanRegisteringPostProcessor implements BeanFactoryPos
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+        final BeanDefinitionRegistry registry = (BeanDefinitionRegistry) beanFactory;
         final ClassPathScanningCandidateComponentProvider scanner = getScanner();
         for (final String basePackage : packagesToScan) {
-            scanPackage(scanner, basePackage);
+            scanPackage(registry, scanner, basePackage);
         }
     }
 
@@ -70,13 +71,12 @@ public class SelfComponentScanRegisteringPostProcessor implements BeanFactoryPos
         return scanner;
     }
 
-    private void scanPackage(final ClassPathScanningCandidateComponentProvider scanner, final String basePackage) {
+    private void scanPackage(final BeanDefinitionRegistry registry, final ClassPathScanningCandidateComponentProvider scanner, final String basePackage) {
         final Set<BeanDefinition> beanDefinitions = scanner.findCandidateComponents(basePackage);
         logger.info("detail basePackage|{}|beanDefinitions|{}", basePackage, beanDefinitions);
         for (final BeanDefinition candidate : beanDefinitions) {
             if (candidate instanceof AnnotatedBeanDefinition) {
-                HANDLERS.forEach(abstractComponentHandler -> abstractComponentHandler.handler((AnnotatedBeanDefinition) candidate,
-                        (BeanDefinitionRegistry) applicationContext));
+                HANDLERS.forEach(abstractComponentHandler -> abstractComponentHandler.handler((AnnotatedBeanDefinition) candidate, registry));
             }
         }
     }

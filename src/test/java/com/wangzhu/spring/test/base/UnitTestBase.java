@@ -28,6 +28,7 @@ public class UnitTestBase {
 
 	@After
 	public void after() {
+		showBeanNames();
 		context.destroy();
 	}
 
@@ -38,5 +39,13 @@ public class UnitTestBase {
 	@SuppressWarnings("unchecked")
 	protected <T extends Object> T getBean(String beanId) {
 		return (T) context.getBean(beanId);
+	}
+
+	protected void showBeanNames(){
+		final String[] beanNames = context.getBeanDefinitionNames();
+
+		for (String beanName : beanNames) {
+			System.out.println(beanName);
+		}
 	}
 }
