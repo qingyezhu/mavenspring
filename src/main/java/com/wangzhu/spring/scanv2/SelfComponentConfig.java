@@ -1,7 +1,7 @@
 package com.wangzhu.spring.scanv2;
 
 import com.wangzhu.service.SelfService;
-import com.wangzhu.spring.registrar.SelfComponentConfigV2;
+import com.wangzhu.spring.registrar.MyServiceRegistrar;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -15,5 +15,6 @@ import org.springframework.context.annotation.Import;
 @ComponentScan("com.wangzhu.spring.aop.aspectj")
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 //@Import(SelfComponentConfigV2.class)
+@Import(MyServiceRegistrar.class)
 public class SelfComponentConfig {
 }

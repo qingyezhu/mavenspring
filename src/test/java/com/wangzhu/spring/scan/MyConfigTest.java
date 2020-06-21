@@ -1,6 +1,7 @@
 package com.wangzhu.spring.scan;
 
 import com.wangzhu.service.MyService;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -22,7 +23,13 @@ public class MyConfigTest {
     public static void main(String[] args) {
         ApplicationContext applicationContext =
                 new AnnotationConfigApplicationContext(MyConfigTest.class);
+
+        System.out.println(applicationContext.getEnvironment());
+        System.out.println(applicationContext.getEnvironment().getProperty("url"));
         MyService myService = applicationContext.getBean(MyService.class);
         myService.print();
+
+        ConfigurableListableBeanFactory beanFactory = ((AnnotationConfigApplicationContext) applicationContext).getBeanFactory();
+        System.out.println(beanFactory);
     }
 }

@@ -1,6 +1,5 @@
 package com.wangzhu.spring.scan;
 
-import com.wangzhu.service.IMyInterface;
 import com.wangzhu.service.SelfService;
 import com.wangzhu.spring.scanv2.SelfComponentConfig;
 import org.springframework.context.ApplicationContext;

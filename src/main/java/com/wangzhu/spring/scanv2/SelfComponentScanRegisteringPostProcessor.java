@@ -52,6 +52,7 @@ public class SelfComponentScanRegisteringPostProcessor implements BeanFactoryPos
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+        System.out.println("postProcessBeanFactory-----");
         final BeanDefinitionRegistry registry = (BeanDefinitionRegistry) beanFactory;
         final ClassPathScanningCandidateComponentProvider scanner = getScanner();
         for (final String basePackage : packagesToScan) {
