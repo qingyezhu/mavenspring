@@ -1,5 +1,6 @@
 package com.wangzhu.spring.registrar;
 
+import com.wangzhu.service.IAllUserService;
 import com.wangzhu.service.SelfBService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -18,7 +19,10 @@ public class SelfServiceTest {
             System.out.println(beanName);
         }
 
-        final SelfBService selfBService = applicationContext.getBean(SelfBService.class);
-        selfBService.print();
+//        final SelfBService selfBService = applicationContext.getBean(SelfBService.class);
+//        selfBService.print();
+
+        final IAllUserService allUserService = applicationContext.getBean(IAllUserService.class);
+        allUserService.print();
     }
 }
