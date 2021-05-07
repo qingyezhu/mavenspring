@@ -139,4 +139,24 @@ public class TestString {
                 break;
         }
     }
+
+    @Test
+    public void test14() {
+        String stra = "hello";
+        String strb = "world";
+        String strc = stra + strb;
+        String strd = "helloworld";
+        //false
+        System.out.println(strd == strc);
+    }
+
+    @Test
+    public void test15() {
+        final String stra = "hello";
+        final String strb = "world";
+        String strc = stra + strb;
+        String strd = "helloworld";
+        //true
+        System.out.println(strd == strc);
+    }
 }
