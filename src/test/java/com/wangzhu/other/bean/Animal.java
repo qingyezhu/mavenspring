@@ -9,6 +9,10 @@ public class Animal {
     private String id;
     private int age;
 
+    static{
+        System.out.println("animal static init");
+    }
+
     Animal() {
     }
 

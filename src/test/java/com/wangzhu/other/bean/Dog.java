@@ -11,6 +11,10 @@ public class Dog extends Animal implements Serializable {
     //父类没有实现Serializable，那么父类需要提供一个无参的构造方法，并且子类能够访问到，否则即使子类实现了Serializable，也不能反序列化
     private String dotAction;
 
+    static {
+        System.out.println("dog static init");
+    }
+
     public Dog(String id, int age, String dotAction) {
         super(id, age);
         this.dotAction = dotAction;

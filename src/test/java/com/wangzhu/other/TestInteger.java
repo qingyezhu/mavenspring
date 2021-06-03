@@ -22,6 +22,8 @@ public class TestInteger {
 //        System.out.println(g.equals(a + b)); //false
 
         int a = 1;
+        a++;
+        System.out.println(a);
         int b = a++;
 //        System.out.println("a = " + a);
 //        System.out.println("b = " + b);
@@ -31,6 +33,11 @@ public class TestInteger {
         a = a++;
 //        System.out.println("a = " + a);
         a = ++a;
+
+
+        Integer i = 1;
+                i++;
+        System.out.println(i);
     }
 
 }
