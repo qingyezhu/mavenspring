@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by wang.zhu on 2020-05-10 18:39.
@@ -45,7 +46,7 @@ public class TestMap {
         }
     }
 
-    private void printField(final Map<String, Integer> map, final String fieldName){
+    private <K,V> void printField(final Map<K, V> map, final String fieldName){
         try {
             final Class<?> clazz = map.getClass();
             final Field field = clazz.getDeclaredField(fieldName);
@@ -61,5 +62,15 @@ public class TestMap {
         int n = 9;
         n |= n >>> 1;
         System.out.println(n);
+    }
+
+    @Test
+    public void test3(){
+        final Map<Integer, Integer> map = new ConcurrentHashMap<>();
+        //printField(map, "table");
+        for(int i = 0;i < 1000;i ++){
+            map.put(i, i);
+        }
+        map.put(1223, 1223);
     }
 }
